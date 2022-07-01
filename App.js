@@ -58,35 +58,7 @@ export default function App() {
     setCurrentNumber(currentNumber + buttonPressed)
   }
 
-
-  return (
-    <View style={styles.container}>
-
-      {/* Area onde o resultado é exibido */}
-      <View style={styles.results}>
-        <Text style={styles.historyText}>{lastNumber}</Text>
-        <Text style={styles.resultText}>{currentNumber}</Text>
-      <View>
-
-      {/* Area onde os botões são exibidos*/}
-      <View style={styles.buttons}>
-
-        {buttons.map((button) => 
-          button === '=' ? // Mapeamento do botão =
-        <TouchableOpacity onPress={() => handleInput(button)} key={button} style={[styles.button, {backgroundColor: '#3dd0e3'}]}>
-          <Text style={[styles.textButton, {color: "white", fontSize: 30}]}>{button}</Text>
-        </TouchableOpacity>
-          : // Mapeamento dos outros botões
-          <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
-            <Text style={[styles.textButton, {color: typeof(button) === 'number' ? 'black': '#0093a6'}]}>{button}</Text>
-          </TouchableOpacity>
-        )}
-      </View>
-    </View>
-  );
-}
-
-// Estilização
+  // Estilização
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -124,5 +96,31 @@ const styles = StyleSheet.create({
   textButton: {
     color: "#7c7c7c",
     fontSize: 20,
-  } 
+  }, 
 });
+
+  return (
+    <View style={styles.container}>
+      {/* Area onde o resultado é exibido */}
+      <View style={styles.results}>
+        <Text style={styles.historyText}>{lastNumber}</Text>
+        <Text style={styles.resultText}>{currentNumber}</Text>
+      </View>
+
+      {/* Area onde os botões são exibidos*/}
+      <View style={styles.buttons}>
+
+        {buttons.map((button) => 
+          button === '=' ? // Mapeamento do botão =
+        <TouchableOpacity onPress={() => handleInput(button)} key={button} style={[styles.button, {backgroundColor: '#3dd0e3'}]}>
+          <Text style={[styles.textButton, {color: "white", fontSize: 30}]}>{button}</Text>
+        </TouchableOpacity>
+          : // Mapeamento dos outros botões
+          <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
+            <Text style={[styles.textButton, {color: typeof(button) === 'number' ? 'black': '#0093a6'}]}>{button}</Text>
+          </TouchableOpacity>
+        )}
+      </View>
+    </View>
+  );
+}
